@@ -21,4 +21,5 @@ app.listen(5000,()=>{
 
 app.get("/",cors(),(req,res)=>{
     res.send("alguien ha entrado a la web")
+    console.log("Hemos recibido una peticion nueva")
 })
