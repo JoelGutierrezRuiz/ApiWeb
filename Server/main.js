@@ -19,7 +19,6 @@ app.listen(5000,()=>{
 
 
 
-app.get("/",cors(),(req,res)=>{
-    res.send("alguien ha entrado a la web")
-    console.log("Hemos recibido una peticion nueva")
-})
+app.get("/:pagina",cors(),(req,res)=>{
+    console.log(req.params.pagina)
+5})
