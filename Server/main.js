@@ -29,6 +29,6 @@ app.get("/datos",cors(),(req,res)=>{
 app.get("/:pagina",cors(),(req,res)=>{
     const pagina = req.params.pagina
     console.log(req.params.pagina)
-    const task = new Task(pagina)
+    const task = new Task({pagina:"1"})
     task.save(task).then(()=>{console.log("Hemos guardado esta pagina")})
 5})
