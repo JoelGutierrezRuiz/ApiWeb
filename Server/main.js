@@ -7,10 +7,18 @@ const Task =require("./task.js")
 
 
 
+//Sacammos fecha
+
+const requestTime = function (req, res, next) {
+    req.requestTime = Date.now()
+    next()
+}
+
 
 
 const app = Express()
 
+app.use(requestTime)
 app.use(cors())
 app.use(morgan("dev"))
 
@@ -29,6 +37,8 @@ app.get("/datos",cors(),(req,res)=>{
 app.get("/:pagina",cors(),(req,res)=>{
     const pagina = req.params.pagina
     console.log(req.params.pagina)
-    const task = new Task({pagina:"1"})
+    const task = new Task({title:req.originalUrl, // String is shorthand for {type: String}
+    visits: [{ ip: toString( req.ip), position:req.originalUrl ,date:3 }]})
+    console.log(req.ip)
     task.save(task).then(()=>{console.log("Hemos guardado esta pagina")})
 5})
